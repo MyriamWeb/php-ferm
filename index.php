@@ -13,14 +13,21 @@
                 <a href=""class="btn btn-outline-secondary col-11">Home</a>
                 <?php include("./includes/ul.inc.html"); ?>
             </nav>
-            <section class="m-5 col-8">
+            <section class="m-5 col-lg-8">
                 <?php
                 if(isset($_GET["add"])){
                  include ("includes/form.inc.html");
                 }
-                else{ ?>
-                 <a href="index.php?add" class="btn btn-primary px-2">Ajouter des données</a>
-                <?php
+                if (isset($_POST["enregistrer"])){
+                    $prénom = $_POST['prénom'];
+                    $nom = $_POST['nom'];
+                    $age = $_POST['age'];
+                    $taille = $_POST['taille'];
+                    $situation = $_POST['formappRadio'];
+                    echo $prénom;
+                }
+                else{
+                     echo "<a href='index.php?add' class='btn btn-primary px-2'>Ajouter des données</a>";
                 }
                 ?>
             </section>
