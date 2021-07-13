@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Php Procédural</title>
+    <?php include("./includes/head.inc.html"); ?>
 </head>
 <body>
-
+<header>
+    <?php include("./includes/header.inc.html"); ?>
+</header>
+    <div>
+        <div class="row">
+            <nav class="col-2 m-5">
+                <button type="button" class="btn btn-outline-secondary col-11">Home</button>
+                <?php include("./includes/ul.inc.html"); ?>
+            </nav>
+    <section class="m-5">
+                <button class="btn btn-primary" type="submit">Ajouter des données</button>
+    </section>
+        </div>
+    </div>
+    <footer>
+        <?php include("./includes/footer.inc.html"); ?>
+    </footer>
 </body>
 </html>
