@@ -10,13 +10,20 @@
     <div>
         <div class="row">
             <nav class="col-2 m-5">
-                <button type="button" class="btn btn-outline-secondary col-11">Home</button>
+                <a href=""class="btn btn-outline-secondary col-11">Home</a>
                 <?php include("./includes/ul.inc.html"); ?>
             </nav>
-    <section class="m-5 col-8">
-        <button class="btn btn-primary" type="submit">Ajouter des données</button>
-        <?php include ("./includes/form.inc.html"); ?>
-    </section>
+            <section class="m-5 col-8">
+                <?php
+                if(isset($_GET["add"])){
+                 include ("includes/form.inc.html");
+                }
+                else{ ?>
+                 <a href="index.php?add" class="btn btn-primary px-2">Ajouter des données</a>
+                <?php
+                }
+                ?>
+            </section>
         </div>
     </div>
     <footer>
