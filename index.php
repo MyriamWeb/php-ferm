@@ -31,11 +31,11 @@
                         include ("includes/form.inc.html");
                     }
                     elseif (isset($_POST["enregistrer"])){
-                        prénom = $_POST['prénom'];
-                        nom = $_POST['nom'];
+                        $prénom = $_POST['prénom'];
+                        $nom = $_POST['nom'];
                         $age = $_POST['age'];
-                        taille = $_POST['taille'];
-                        situation = $_POST['situation'];
+                        $taille = $_POST['taille'];
+                        $situation = $_POST['situation'];
 
                         $table = array(
                             "first_name" => $prénom,
