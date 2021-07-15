@@ -4,17 +4,20 @@
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <?php include("./includes/head.inc.html"); ?>
 </head>
+
 <body>
 <header>
     <?php include("./includes/header.inc.html"); ?>
 </header>
+
     <div>
-        <div class="row">
-            <nav class="col-2 m-5">
-                <a href="index.php"class="btn btn-outline-secondary col-11">Home</a>
+        <div class="container-fluid row mx-0">
+            <nav class="col-sm-2 my-3">
+                <a href="index.php"><button class="btn btn-outline-secondary btn-block">Home</button></a>
                 <?php 
                 if(!empty($_SESSION)){
                     include("./includes/ul.inc.html");
@@ -22,7 +25,7 @@
                 }
                 ?>
             </nav>
-            <section class="m-5 col-lg-8">
+            <section class=" col-sm-9">
                 <?php
                 if(isset($_GET["add"])){
                  include ("includes/form.inc.html");
@@ -35,10 +38,10 @@
                     $situation = $_POST['situation'];
 
                     $table = array(
-                        "prénom" => $prénom,
-                        "nom" => $nom,
+                        "first_name" => $prénom,
+                        "last_name" => $nom,
                         "age" => $age,
-                        "taille" => $taille,
+                        "size" => $taille,
                         "situation" => $situation
                     );
                     $_SESSION["table"] = $table;
@@ -56,35 +59,60 @@
                         <br>
                         <p>===> Construction d/'une phrase avec le contenu du tableau :</p>";
                     echo
-                        "<h2>" .$table['prénom'] . " " .$table['nom']. "</h2>".
-                        "<p>" .$table['age']." ans, je mesure " . $table['taille'] .
+                        "<h2>" .$table['first_name'] . " " .$table['last_name']. "</h2>".
+                        "<p>" .$table['age']." ans, je mesure " . $table['size'] .
                         " et je fais partie des " .$table['situation'] . "s de la promo Simplon.</p>";
                     echo 
                         "<br>
                         <p>===> Construction d/'une pharse aprés MAJ du tableau :</p>";
-                        $table['prénom'] = ucfirst ($table['prénom']); 
-                        $table['nom'] = strtoupper($table['nom']);
+                        $table['first_name'] = ucfirst ($table['first_name']); 
+                        $table['last_name'] = strtoupper($table['last_name']);
                     echo
-                        "<h2>" .$table['prénom'] . " " .$table['nom']. "</h2>".
-                        "<p>" .$table['age']." ans, je mesure " . $table['taille'] .
+                        "<h2>" .$table['first_name'] . " " .$table['last_name']. "</h2>".
+                        "<p>" .$table['age']." ans, je mesure " . $table['size'] .
                         " et je fais partie des " .$table['situation'] . "s de la promo Simplon.</p>";
                     echo
                         "<br>
                         <p>===> Affichage d/'une virgue à la place du point pour la taille :</p>";
-                        $table['prénom'] = ucfirst ($table['prénom']); 
-                        $table['nom'] = strtoupper($table['nom']);
-                        $table['taille'] = str_replace('.' , ',', $table['taille']);
+                        $table['first_name'] = ucfirst ($table['first_name']); 
+                        $table['last_name'] = strtoupper($table['last_name']);
+                        $table['size'] = str_replace('.' , ',', $table['size']);
                     echo
-                        "<h2>" .$table['prénom'] . " " .$table['nom']. "</h2>".
-                        "<p>" .$table['age']." ans, je mesure " . $table['taille'] .
+                        "<h2>" .$table['first_name'] . " " .$table['last_name']. "</h2>".
+                        "<p>" .$table['age']." ans, je mesure " . $table['size'] .
                         " et je fais partie des " .$table['situation'] . "s de la promo Simplon.</p>";
+                }
+                elseif(isset($_GET["loop"])){
+                    echo
+                        "<h2>Boucle</h2>
+                        <br>
+                        <p>===> Lecture du tableau à l'aide d'une boucle foreach</p>";
+                        $i = 0;
+                        foreach ($table as $key => $value){
+                            echo
+                                'à la ligne n°' .$i++.' correspond la clé "'.$key. '" et contient ' .$value."<br>"; 
+                        }
+                }
+                elseif(isset($_GET["function"])){
+                    echo
+                        "<h2>Fonction</h2>
+                        <br>
+                        <p>===> J'utilise ma fonction readTable()</p>";
+                    readTable($table);
                 }
                 elseif(isset($_GET["del"])){
                     unset ($_SESSION['table']);
                     echo "<h2>Les données ont bien été supprimées</h2>";
                 }
                 else{
-                     echo "<a href='index.php?add' class='btn btn-primary px-2'>Ajouter des données</a>";
+                     echo "<a href='index.php?add' class='btn btn-primary my-3'>Ajouter des données</a>";
+                }
+                function readTable ($table) {
+                    $i = 0;
+                    foreach ($table as $key => $value){
+                        echo
+                            'à la ligne n°' .$i++.' correspond la clé "'.$key. '" et contient ' .$value."<br>"; 
+                    }
                 }
                 ?>
             </section>
