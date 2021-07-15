@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,8 +14,12 @@
     <div>
         <div class="row">
             <nav class="col-2 m-5">
-                <a href=""class="btn btn-outline-secondary col-11">Home</a>
-                <?php include("./includes/ul.inc.html"); ?>
+                <a href="index.php"class="btn btn-outline-secondary col-11">Home</a>
+                <?php 
+                if(!empty($_SESSION)){
+                    include("./includes/ul.inc.html");
+                }
+                ?>
             </nav>
             <section class="m-5 col-lg-8">
                 <?php
@@ -32,7 +40,12 @@
                         "taille" => $taille,
                         "formappRadio" => $situation
                     );
+                    $_SESSION["table"] = $table;
                     echo "<h2>Données sauvegardées</h2>";
+                }
+                elseif(isset($_GET["del"])){
+                    unset ($_SESSION['table']);
+                    echo "<h2>Les données ont bien été supprimées</h2>";
                 }
                 else{
                      echo "<a href='index.php?add' class='btn btn-primary px-2'>Ajouter des données</a>";
