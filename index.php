@@ -18,6 +18,7 @@
                 <?php 
                 if(!empty($_SESSION)){
                     include("./includes/ul.inc.html");
+                    $table = $_SESSION["table"];
                 }
                 ?>
             </nav>
@@ -31,17 +32,52 @@
                     $nom = $_POST['nom'];
                     $age = $_POST['age'];
                     $taille = $_POST['taille'];
-                    $situation = $_POST['formappRadio'];
+                    $situation = $_POST['situation'];
 
                     $table = array(
                         "prénom" => $prénom,
                         "nom" => $nom,
                         "age" => $age,
                         "taille" => $taille,
-                        "formappRadio" => $situation
+                        "situation" => $situation
                     );
                     $_SESSION["table"] = $table;
                     echo "<h2>Données sauvegardées</h2>";
+                }
+                elseif(isset($_GET["debugging"])){
+                    echo "<h2>Débogage</h2>";
+                    print"<pre>";
+                    print_r($table);
+                    print"</pre>";
+                }
+                elseif(isset($_GET["concatenation"])){
+                    echo 
+                        "<h2>Concaténation</h2>
+                        <br>
+                        <p>===> Construction d/'une phrase avec le contenu du tableau :</p>";
+                    echo
+                        "<h2>" .$table['prénom'] . " " .$table['nom']. "</h2>".
+                        "<p>" .$table['age']." ans, je mesure " . $table['taille'] .
+                        " et je fais partie des " .$table['situation'] . "s de la promo Simplon.</p>";
+                    echo 
+                        "<br>
+                        <p>===> Construction d/'une pharse aprés MAJ du tableau :</p>";
+                        $table['prénom'] = ucfirst ($table['prénom']); 
+                        $table['nom'] = strtoupper($table['nom']);
+                    echo
+                        "<h2>" .$table['prénom'] . " " .$table['nom']. "</h2>".
+                        "<p>" .$table['age']." ans, je mesure " . $table['taille'] .
+                        " et je fais partie des " .$table['situation'] . "s de la promo Simplon.</p>";
+                    echo
+                        "<br>
+                        <p>===> Affichage d/'une virgue à la place du point pour la taille :</p>";
+                        $table['prénom'] = ucfirst ($table['prénom']); 
+                        $table['nom'] = strtoupper($table['nom']);
+                        $table['taille'] = str_replace('.' , ',', $table['taille']);
+                    echo
+                        "<h2>" .$table['prénom'] . " " .$table['nom']. "</h2>".
+                        "<p>" .$table['age']." ans, je mesure " . $table['taille'] .
+                        " et je fais partie des " .$table['situation'] . "s de la promo Simplon.</p>";
                 }
                 elseif(isset($_GET["del"])){
                     unset ($_SESSION['table']);
