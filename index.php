@@ -6,12 +6,12 @@
 <html lang="fr">
 
 <head>
-    <?php include("./includes/head.inc.html"); ?> //lien vers page head.html
+    <?php include("./includes/head.inc.html"); ?> 
 </head>
 
 <body>
 <header>
-    <?php include("./includes/header.inc.html"); ?> //lien vers header.html
+    <?php include("./includes/header.inc.html"); ?> 
 </header>
 
     <div>
@@ -119,7 +119,7 @@
         </div>
     </div>
     <footer>
-        <?php include("./includes/footer.inc.html"); ?> //lien vers footer.hmtl
+        <?php include("./includes/footer.inc.html"); ?> 
     </footer>
 </body>
 </html>
