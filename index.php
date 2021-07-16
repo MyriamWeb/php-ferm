@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<!-- ****************INCLUDE PAGE HEAD****************** -->
+<!-- ****************INCLUDE PAGE HEAD*************************** -->
 <head>
     <?php include("./includes/head.inc.html"); ?> 
 </head>
@@ -14,7 +14,7 @@
 <header>
     <?php include("./includes/header.inc.html"); ?> 
 </header>
-<!-- **********************NAV**************************** -->
+<!-- **********************NAV************************************* -->
     <div>
         <div class="container-fluid row mx-0">
             <nav class="col-sm-2 my-3">
